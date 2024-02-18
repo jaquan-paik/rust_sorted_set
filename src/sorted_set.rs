@@ -1,13 +1,11 @@
+use std::collections::btree_map::Range;
 use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::collections::HashSet;
+use std::ops::RangeBounds;
 
-pub enum SortedSetNode{
-    Node(String, u32),
-    Nil
-}
+
 #[derive(Debug)]
-
 pub struct SortedSet{
     score_index : BTreeMap<u32, HashSet<String>>,
     member_hash_map : HashMap<String,u32>,
@@ -27,11 +25,12 @@ impl SortedSet{
         self.score_index.entry(score).or_insert_with(HashSet::new).insert(member);
     }
 
-    pub fn stringify(&self ) -> String{
-        // 쭉 score index 순으로 출력
-        String::new()
+    pub fn z_range_by_score<R>(&self, range: R) -> Range<u32,HashSet<String>>
+    where
+        R: RangeBounds<u32>
+    {
+         self.score_index.range(range)
     }
-
 
     fn remove_score_index(&mut self, score : &u32, member : &String){
         if let Some(hash_set) = self.score_index.get_mut(&score){

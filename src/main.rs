@@ -1,6 +1,5 @@
-mod sorted_set; // sorted_set 모듈 선언
-
-use sorted_set::SortedSet; // SortedSet 구조체를 현재 범위로 가져옴
+mod sorted_set;
+use sorted_set::SortedSet;
 
 
 fn main() {
@@ -8,6 +7,11 @@ fn main() {
     sorted_set.z_add("a".to_string(), 1);
     sorted_set.z_add("b".to_string(), 2);
     sorted_set.z_add("c".to_string(), 3);
+    sorted_set.z_add("c".to_string(), 1);
+    sorted_set.z_add("d".to_string(), 4);
+
+
 
     println!("{:?}", &sorted_set);
+    println!("{:?}", &sorted_set.z_range_by_score(2..))
 }
