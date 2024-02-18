@@ -9,6 +9,8 @@ fn main() {
     sorted_set.z_add("c".to_string(), 3);
     sorted_set.z_add("c".to_string(), 1);
     sorted_set.z_add("d".to_string(), 4);
+    sorted_set.z_add("e".to_string(), 1);
+    sorted_set.z_rem(&"e".to_string());
 
 
 

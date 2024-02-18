@@ -25,6 +25,14 @@ impl SortedSet{
         self.score_index.entry(score).or_insert_with(HashSet::new).insert(member);
     }
 
+    pub fn z_rem(&mut self, member : &String) {
+        if let Some(score) = self.member_hash_map.get(member).cloned(){
+            self.remove_score_index(&score, &member);
+        }
+        self.member_hash_map.remove(member);
+    }
+
+
     pub fn z_range_by_score<R>(&self, range: R) -> Range<u32,HashSet<String>>
     where
         R: RangeBounds<u32>
