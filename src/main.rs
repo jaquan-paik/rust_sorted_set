@@ -15,5 +15,6 @@ fn main() {
 
 
     println!("{:?}", &sorted_set);
-    println!("{:?}", &sorted_set.z_range_by_score(2..))
+    println!("{:?}", &sorted_set.z_range_by_score(2..));
+    println!("{:?}", &sorted_set.z_range_by_score(0..std::u32::MAX));
 }

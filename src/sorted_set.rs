@@ -32,7 +32,6 @@ impl SortedSet{
         self.member_hash_map.remove(member);
     }
 
-
     pub fn z_range_by_score<R>(&self, range: R) -> Range<u32,HashSet<String>>
     where
         R: RangeBounds<u32>
